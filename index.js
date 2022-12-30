@@ -29,6 +29,7 @@ dropArea.addEventListener('change', (event) => {
 
 
 const img = document.getElementById('show-area');
+const download = document.getElementById('download');
 function readImage(file) {
   // Check if the file is an image.
   if (file.type && !file.type.startsWith('image/')) {
@@ -39,6 +40,8 @@ function readImage(file) {
   const reader = new FileReader();
   reader.addEventListener('load', (event) => {
     img.src = event.target.result;
+    download.href=event.target.result
+    download.innerHTML=file.name
   });
   reader.addEventListener('progress', (event) => {
     if (event.loaded && event.total) {
