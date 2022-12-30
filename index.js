@@ -13,7 +13,7 @@ dropArea.addEventListener('drop', (event) => {
   const fileList = event.dataTransfer.files;
   console.log(fileList);
   for (const file of fileList) {
-  readImage(file)
+    readImage(file)
   }
 
 });
@@ -22,10 +22,13 @@ dropArea.addEventListener('change', (event) => {
 
   const fileList = event.target.files;
   console.log(fileList);
+  for (const file of fileList) {
+    readImage(file)
+  }
 });
 
 
-const img =document.getElementById('show-area');
+const img = document.getElementById('show-area');
 function readImage(file) {
   // Check if the file is an image.
   if (file.type && !file.type.startsWith('image/')) {
