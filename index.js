@@ -40,5 +40,11 @@ function readImage(file) {
   reader.addEventListener('load', (event) => {
     img.src = event.target.result;
   });
+  reader.addEventListener('progress', (event) => {
+    if (event.loaded && event.total) {
+      const percent = (event.loaded / event.total) * 100;
+      console.log(`Progress: ${Math.round(percent)}`);
+    }
+  });
   reader.readAsDataURL(file);
 }
